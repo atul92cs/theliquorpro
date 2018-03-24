@@ -2,7 +2,7 @@
   class dboperation
   {
      private $con;
-	 function__construct()
+	 function __construct()
 	 {
 	    require_once dirname(__FILE__).'/dbconnect.php';
 	  $db=new dbconnnect();
@@ -41,5 +41,5 @@
 		 $stmt->store_result();
 		return $stmt->num_rows>0;
 	 }
-  }
+  
 ?>
