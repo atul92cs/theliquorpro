@@ -1,5 +1,5 @@
 <?php
- efine('DB_USERNAME','admin');
+ define('DB_USERNAME','admin');
  define('DB_PASSWORD','savita92');
  define('DB_HOST','trial.cpaoqpenaokn.us-east-2.rds.amazonaws.com');
  define('DB_NAME','liquorproject');
