@@ -22,7 +22,7 @@
 		}
 		return USER_EXIST;
 		 }
-	 }
+	 
 	 function userLogin($phone,$pin)
 	 {
 		 $pass=md5($pin);
@@ -41,5 +41,5 @@
 		 $stmt->store_result();
 		return $stmt->num_rows>0;
 	 }
-  
+  }
 ?>
