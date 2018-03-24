@@ -37,7 +37,7 @@ $app->post('/register',function(Request $req,Response $res){
 		$res->getBody()->write(json_encode($responseData));
 	}
 });
-$app->get('/login',function(Request $req,Response $res){
+$app->post('/login',function(Request $req,Response $res){
 	if(isTheseParametersAvailable(array('phone','pin')))
 	{
 		$requestedBody=$req->getParsedBody();
