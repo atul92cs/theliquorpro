@@ -22,7 +22,7 @@ $app->post('/register',function(Request $req,Response $res){
 		if($result==USER_CREATED)
 		{
 			$responseData['error']=false;
-			$responseData['Message']='User Registered Succesfully';
+			$responseData['Message']='User Registered Successfully';
 		}
 		else if($result==USER_CREATION_FAILED)
 		{
@@ -38,6 +38,27 @@ $app->post('/register',function(Request $req,Response $res){
 	}
 });
 $app->post('/login',function(Request $req,Response $res){
+	if(isTheseParametersAvailable(array('phone','pin')))
+	{
+		$requestedBody=$req->getParsedBody();
+		$phone=$requestedBody['phone'];
+		$pin=$requestedBody['pin'];
+		$db=new dboperation();
+		$responseData=array();
+		$result=$db->userLogin($phone,$pin);
+		if($result==true)
+		{
+			$responseData['error']=false;
+			 $responseData['user']='Successfully logged in';
+		}
+		else
+		{
+			 $responseData['error']=true;
+			 $responseData['Message']='Error:Please try again';
+			
+		}
+			      $res->getBody()->write(json_encode($responseData));	 
+	}
 	
 });
 function isTheseParametersAvailable($required_fields)
