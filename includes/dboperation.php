@@ -14,7 +14,7 @@
 		 {
 			 $pass=md5($pin);
 			 $stmt=$this->con->prepare("INSERT INTO users(user_name,user_email,user_phone,user_pin)VALUES(?,?,?,?)");
-			 $stmt->bind_param($name,$phone,$email,$pass);
+			 $stmt->bind_param("ssss",$name,$phone,$email,$pass);
 			 if($stmt->execute())
 			return USER_CREATED;
 		
