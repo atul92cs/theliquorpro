@@ -8,6 +8,38 @@ $app->get('/test',function(Request $req,Response $res){
 	    $result="it works.app is updated";
 		$res->getBody()->write(json_encode(array($result)));
 }); 
+$app->post('/register',function(Request $req,Response $res){
+	if(isTheseParametersAvailable(array('name','email','phone','pin')))
+	{
+		$requestedBody=$req->getParsedBody();
+		$name=$requestedBody['name'];
+		$email=$requestedBody['email'];
+		$phone=$requestedBody['phone'];
+		$pin=$requestedBody['pin'];
+		$db=new dboperation();
+		$responseData=array();
+		$result=$db->registerUser($name,$phone,$email,$pin);
+		if($result==USER_CREATED)
+		{
+			$responseData['error']=false;
+			$responseData['Message']='User Registered Succesfully';
+		}
+		else if($result==USER_CREATION_FAILED)
+		{
+			$responseData['error']=true;
+			$responseData['Message']='Error: User Creation failed, please try again';
+		}
+		else if($result==USER_EXISTS)
+		{
+			$responseData['error']=true;
+			$responseData['Message']='Error:user already exists';
+		}
+		$res->getBody()->write(json_encode($responseData));
+	}
+});
+$app->post('/login',function(Request $req,Response $res){
+	
+});
 function isTheseParametersAvailable($required_fields)
  {
 	  $error=false;
