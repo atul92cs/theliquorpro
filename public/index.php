@@ -49,7 +49,7 @@ $app->post('/login',function(Request $req,Response $res){
 		if($result==true)
 		{
 			$responseData['error']=false;
-			 $responseData['user']='Successfully logged in';
+			$responseData['Message']='Successfully logged in';
 		}
 		else
 		{
@@ -57,7 +57,7 @@ $app->post('/login',function(Request $req,Response $res){
 			 $responseData['Message']='Error:Please try again';
 			
 		}
-			      $res->getBody()->write(json_encode($responseData));	 
+	     $res->getBody()->write(json_encode($responseData));	 
 	}
 	
 });
