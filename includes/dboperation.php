@@ -67,8 +67,8 @@
 			$temp['productId']=$id;
 			$temp['productName']=$name;
 			$temp['productImage']=$image;
-			$temp['productCost']=$cost;
-			$temp['sellerId']=$sellerid;
+			$temp['productPrice']=$price;
+			$temp['productCategory']=$category;
 			array_push($product,$temp);
 		 }
 		 return $product;
