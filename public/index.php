@@ -45,7 +45,7 @@ $app->post('/login',function(Request $req,Response $res){
 		$pin=$requestedBody['pin'];
 		$db=new dboperation();
 		$responseData=array();
-		/*$result=$db->userLogin($phone,$pin);*/
+		$result=$db->userLogin($phone,$pin);
 		
 		if($result==true)
 		{
