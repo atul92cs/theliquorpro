@@ -47,7 +47,7 @@ $app->post('/login',function(Request $req,Response $res){
 		$responseData=array();
 		/*$result=$db->userLogin($phone,$pin);*/
 		
-		if($db->userLogin($phone,$pin))
+		if($result==true)
 		{
 			$responseData['error']=false;
 			$responseData['User']=$db->getUserbyphone($phone);
