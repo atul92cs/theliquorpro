@@ -55,5 +55,23 @@
 		 return $user;
 		 
 	 }
+	 function getProducts()
+	 {
+		 $stmt=$this->con->prepare("SELECT * FROM products");
+		 $stmt->execute();
+		 $stmt->bind_result($id,$name,$price,$pic,$quantity,$category);
+		 $product=array();
+		 while($stmt->fetch())
+		 {
+			 $temp=array();
+			$temp['productId']=$id;
+			$temp['productName']=$name;
+			$temp['productImage']=$image;
+			$temp['productCost']=$cost;
+			$temp['sellerId']=$sellerid;
+			array_push($product,$temp);
+		 }
+		 return $product;
+	 }
   }
 ?>

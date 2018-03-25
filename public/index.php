@@ -62,6 +62,12 @@ $app->post('/login',function(Request $req,Response $res){
 	}
 	
 });
+$app->get('/products',function(Request $req,Response $res){
+	 $db=new dboperation();
+	 $products=$db->getProducts();
+	 $res->getBody()->write(json_encode(array("Products"=>$products)));
+	
+});
 function isTheseParametersAvailable($required_fields)
  {
 	  $error=false;
