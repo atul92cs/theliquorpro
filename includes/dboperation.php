@@ -35,7 +35,7 @@
 	 }
 	 function isUserExist($email)
 	 {
-		 $stmt=$this->con->prepare("SELECT * FROM users WHERE user_email=?");
+		 $stmt=$this->con->prepare("SELECT user_id FROM users WHERE user_email=?");
 		 $stmt->bind_param("s",$email);
 		 $stmt->execute();
 		 $stmt->store_result();
@@ -43,7 +43,16 @@
 	 }
 	 function getUserbyphone($phone)
 	 {
-		 $stmt=$this->con->prepare("SELECT user_id,user_name,user_email FROM users WHERE user_phone=? ");
+		 $stmt=$this->con->prepare("SELECT user_id,user_name,user_email FROM users WHERE user_phone=?");
+		 $stmt->bind_param("s",$phone);
+		 $stmt->execute();
+		 $stmt->bind_result($id,$name,$email);
+		 $user=array();
+		 $stmt->fetch();
+		 $user['Id']=$id;
+		 $user['Name']=$name;
+		 $user['Phone']=$phone;
+		 return $user;
 		 
 	 }
   }

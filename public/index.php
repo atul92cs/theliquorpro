@@ -46,6 +46,7 @@ $app->post('/login',function(Request $req,Response $res){
 		$db=new dboperation();
 		$responseData=array();
 		$result=$db->userLogin($phone,$pin);
+		
 		if($result==true)
 		{
 			$responseData['error']=false;
@@ -57,7 +58,7 @@ $app->post('/login',function(Request $req,Response $res){
 			 $responseData['Message']='Error:Please try again';
 			
 		}
-	     $res->getBody()->write(json_encode($responseData));	 
+	  $res->getBody()->write(json_encode($responseData));	 
 	}
 	
 });
