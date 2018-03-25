@@ -80,11 +80,17 @@
 		 $stmt->execute();
 		 $stmt->bind_result($id,$name,$price,$pic,$quantity,$category);
 		 $product=array();
-		 $product['id']=$id;
-		 $product['name']=$name;
-		 $product['price']=$price;
-		 $product['quantity']=$quantity;
-		 $product['category']=$category;
+          while($stmt->fetch())
+		 {
+			 $temp=array();
+			$temp['productId']=$id;
+			$temp['productName']=$name;
+			$temp['productImage']=$image;
+			$temp['productPrice']=$price;
+			$temp['productCategory']=$category;
+			array_push($product,$temp);
+		 }
+		 return $product;
 		 return $product;
 		 
 	 }
