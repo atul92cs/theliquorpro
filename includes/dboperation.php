@@ -73,5 +73,20 @@
 		 }
 		 return $product;
 	 }
+	 function getProductDetails($id)
+	 {
+		 $stmt=$this->con->prepare("SELECT * FROM products WHERE product_id=? ");
+		 $stmt->bind_param("s",$id);
+		 $stmt->execute();
+		 $stmt->bind_result($id,$name,$price,$pic,$quantity,$category);
+		 $product=array();
+		 $product['id']=$id;
+		 $product['name']=$name;
+		 $product['price']=$price;
+		 $product['quantity']=$quantity;
+		 $product['category']=$category;
+		 return $product;
+		 
+	 }
   }
 ?>
