@@ -12,9 +12,9 @@
 	 {
 		 if(!$this->isUserExist($email))
 		 {
-			 $pass=md5($pin);
+			/* $pass=md5($pin);*/
 			 $stmt=$this->con->prepare("INSERT INTO users(user_name,user_email,user_phone,user_pin)VALUES(?,?,?,?)");
-			 $stmt->bind_param("ssss",$name,$email,$phone,$pass);
+			 $stmt->bind_param("ssss",$name,$email,$phone,$pin);
 			 if($stmt->execute())
 			return USER_CREATED;
 		
@@ -25,9 +25,9 @@
 	 
 	 function userLogin($phone,$pin)
 	 {
-		 $pass=md5($pin);
+		/* $pass=md5($pin);*/
 		 $stmt=$this->con->prepare("SELECT user_id FROM users WHERE user_phone=? AND user_pin=?");
-		 $stmt->bind_param("ss",$phone,$pass);
+		 $stmt->bind_param("ss",$phone,$pin);
 		 $stmt->execute();
 		 $stmt->store_result();
 		 return $stmt->num_rows>0;
