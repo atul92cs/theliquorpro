@@ -74,6 +74,12 @@ $app->get('/products/{id}',function(Request $req,Response $res){
 	  $product=$db->getProductDetails($id);
 	  $res->getBody()->write(json_encode(array("Product"=>$product)));
 });
+$app->get('/products/{name}',function(Request $req,Response $res){
+	$name=$req->getAttribute('name');
+	$db=new dboperation();
+	$product=$db->getSpecProduct($name);
+	 $res->getBody()->write(json_encode(array("Product"=>$product)));
+});
 function isTheseParametersAvailable($required_fields)
  {
 	  $error=false;

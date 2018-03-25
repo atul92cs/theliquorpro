@@ -91,6 +91,25 @@
 			array_push($product,$temp);
 		 }
 		 return $product;
+		 
+		 
+	 }
+	 function getSpecProduct($name)
+	 {
+		 $stmt=$this->con->prepare("SELECT product_id,product_price,product_quantity WHERE product_name=?");
+		 $stmt->bind_param("s",$name);
+		 $stmt->execute();
+		 $stmt->bind_result($id,$price,$quantity);
+		 $product=array();
+		  while($stmt->fetch())
+		 {
+			 $temp=array();
+			$temp['productId']=$id;
+			
+			$temp['productPrice']=$price;
+			$temp['productQuantity']=$quantity;
+			array_push($product,$temp);
+		 }
 		 return $product;
 		 
 	 }
