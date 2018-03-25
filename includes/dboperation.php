@@ -96,7 +96,7 @@
 	 }
 	 function getProductsbyCat($category)
 	 {
-		 $stmt=$this->con->prepare("SELECT * FROM products WHERE product_category=?");
+		 $stmt=$this->con->prepare("SELECT product_id,product_name,product_price,product_pic,product_quantity FROM products WHERE product_category=?");
 		 $stmt->bind_param("s",$category);
 		 $stmt->execute();
 		 $stmt->bind_result($id,$name,$price,$pic,$quantity);
