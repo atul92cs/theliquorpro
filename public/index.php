@@ -80,6 +80,12 @@ $app->get('/product/{name}',function(Request $req,Response $res){
 	$product=$db->getSpecProduct($name);
 	 $res->getBody()->write(json_encode(array("Product"=>$product)));
 });
+$app->get('/pr/{category}',function(Request $req,Response $res){
+	$category=$req->getAttribute('category');
+	$db=new dboperation();
+	$product=$db->getProductsbyCat($category);
+	 $res->getBody()->write(json_encode(array("Product"=>$product)));
+});
 function isTheseParametersAvailable($required_fields)
  {
 	  $error=false;

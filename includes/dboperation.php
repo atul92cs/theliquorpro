@@ -94,6 +94,25 @@
 		 
 		 
 	 }
+	 function getProductsbyCat($category)
+	 {
+		 $stmt=$this->con->prepare("SELECT * FROM products WHERE product_category=?");
+		 $stmt->bind_param("s",$category);
+		 $stmt->execute();
+		 $stmt->bind_result($id,$name,$price,$pic,$quantity);
+		 $product=array();
+		  while($stmt->fetch())
+		 {
+			 $temp=array();
+			$temp['productId']=$id;
+			$temp['productName']=$name;
+			$temp['productImage']=$image;
+			$temp['productPrice']=$price;
+			
+			array_push($product,$temp);
+		 }
+		 return $product;
+	 }
 	 function getSpecProduct($name)
 	 {
 		 $stmt=$this->con->prepare("SELECT product_id,product_price,product_quantity FROM products WHERE product_name=?");
@@ -105,7 +124,6 @@
 		 {
 			 $temp=array();
 			$temp['productId']=$id;
-			
 			$temp['productPrice']=$price;
 			$temp['productQuantity']=$quantity;
 			array_push($product,$temp);
