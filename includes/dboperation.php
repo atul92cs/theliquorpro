@@ -39,7 +39,7 @@
 		 $stmt->bind_param("s",$email);
 		 $stmt->execute();
 		 $stmt->store_result();
-		return $stmt->num_rows>0;
+		 return $stmt->num_rows>0;
 	 }
 	 function getUserbyphone($phone)
 	 {

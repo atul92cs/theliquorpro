@@ -47,12 +47,12 @@ $app->post('/login',function(Request $req,Response $res){
 		$responseData=array();
 		$result=$db->userLogin($phone,$pin);
 		
-		if($result==true)
+		 if($result==true)
 		{
 			$responseData['error']=false;
 			$responseData['User']=$db->getUserbyphone($phone);
 		}
-		else
+		 else
 		{
 			 $responseData['error']=true;
 			 $responseData['Message']='Error:Please try again';
