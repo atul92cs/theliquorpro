@@ -49,7 +49,7 @@ $app->post('/login',function(Request $req,Response $res){
 		if($result==true)
 		{
 			$responseData['error']=false;
-			$responseData['Message']='Successfully logged in';
+			$responseData['User']=$db->getUserbyphone($phone);
 		}
 		else
 		{

@@ -26,7 +26,7 @@
 	 function userLogin($phone,$pin)
 	 {
 		 $pass=md5($pin);
-		 $stmt=$this->con->prepare("SELECT user_id FROM users WHERE user_phone=? AND user_pin=? ");
+		 $stmt=$this->con->prepare("SELECT user_id FROM users WHERE user_phone=? AND user_pin=?");
 		 $stmt->bind_param("ss",$phone,$pass);
 		 $stmt->execute();
 		 $stmt->store_result();
@@ -40,6 +40,11 @@
 		 $stmt->execute();
 		 $stmt->store_result();
 		return $stmt->num_rows>0;
+	 }
+	 function getUserbyphone($phone)
+	 {
+		 $stmt=$this->con->prepare("SELECT user_id,user_name,user_email FROM users WHERE user_phone=? ");
+		 
 	 }
   }
 ?>
