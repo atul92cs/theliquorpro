@@ -96,7 +96,7 @@
 	 }
 	 function getSpecProduct($name)
 	 {
-		 $stmt=$this->con->prepare("SELECT product_id,product_price,product_quantity WHERE product_name=?");
+		 $stmt=$this->con->prepare("SELECT product_id,product_price,product_quantity FROM products WHERE product_name=?");
 		 $stmt->bind_param("s",$name);
 		 $stmt->execute();
 		 $stmt->bind_result($id,$price,$quantity);
