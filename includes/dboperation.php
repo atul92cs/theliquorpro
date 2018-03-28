@@ -131,5 +131,10 @@
 		 return $product;
 		 
 	 }
+	 function upadteUserDetails($id)
+	 {
+		 $stmt=$thid->con->prepare("UPDATE ");
+		 
+	 }
   }
 ?>
